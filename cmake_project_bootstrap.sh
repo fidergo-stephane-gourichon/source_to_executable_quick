@@ -76,11 +76,11 @@ them easily:
 * Easy save space: after install you can remove build tree (perhaps
   even source tree) easily.
 
-* Suffixing with operating system name means that there's never any
-  doubt about which operating system a particular directory is
-  targetting.  Thus, no surprise about missing library at run time, no
-  crash due to subtle library breakage.  If you change OS, just re-run
-  the script on your new OS and bam it works!
+* Suffixing with operating system name and version means that there's
+  never any doubt about which operating system a particular directory
+  is targetting.  Thus, no surprise about missing library at run time,
+  no crash due to subtle library breakage.  If you change OS, just
+  re-run the script on your new OS and bam it works!
 
 [BAM! I got it running.](http://www.smbc-comics.com/comic/2011-02-17)
 
