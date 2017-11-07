@@ -36,6 +36,18 @@
 # Ask bash to abort on error, error on referring undefined variables, and error if part of a pipe fails.
 set -eEuo pipefail
 
+function compute_OS_ID()
+{
+    # Figure out an operating system suffix.
+    export OS_ID=$( { echo $(sed -n -e 's/^ID=\(.*\)/\1/p' </etc/os-release)-$(sed -n -e 's/^VERSION_ID="\(.*\)"/\1/p' </etc/os-release) ; } | sed -e 's/[^-.a-zA-Z0-9]/_/g' ; )
+    if [[ "$OS_ID" == "-" ]]
+    then
+        echo >&2 "WARNING: could not figure out your OS version from /etc/os-release."
+        echo >&2 "WARNING: will use a generic output directory"
+        OS_ID="unknown"
+    fi
+}
+
 function show_usage_and_abort()
 {
     cat <<EOF
@@ -176,14 +188,7 @@ shift
 
 SOURCEDIR_PARENT="${PWD%/}"
 
-# Figure out an operating system suffix.
-export OS_ID=$( { echo $(sed -n -e 's/^ID=\(.*\)/\1/p' </etc/os-release)-$(sed -n -e 's/^VERSION_ID="\(.*\)"/\1/p' </etc/os-release) ; } | sed -e 's/[^-.a-zA-Z0-9]/_/g' ; )
-if [[ "$OS_ID" == "-" ]]
-then
-    echo >&2 "WARNING: could not figure out your OS version from /etc/os-release."
-    echo >&2 "WARNING: will use a generic output directory"
-    OS_ID="unknown"
-fi
+compute_OS_ID
 
 # Stub left out because not all projects use git. Useful when you want to keep several install trees marked with exact version.
 #PROJECT_REV_ID=$( cd "$SOURCEDIR_PARENT" ; git rev-parse --short HEAD )
