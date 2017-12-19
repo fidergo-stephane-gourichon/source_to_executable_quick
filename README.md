@@ -61,22 +61,24 @@ particular build/install directory is targetting.
 1. This averts the scenario of running old build/install trees in newer
 versions of distributions, which too often results in:
 
- * missing library at run time (because distribution upgraded to a
-   newer binary-incompatible library, as binary linking is less
-   flexible than compilation-time configuration),
+    * missing library at run time (because distribution upgraded to a
+	  newer binary-incompatible library, as binary linking is less
+	  flexible than compilation-time configuration),
 
- * and/or crashes due to subtle library breakage.
+    * and/or crashes due to subtle library breakage.
 
 2. This allows to easily find and purge versions for old OSes.
 
 <pre>
-    find /mystorage -iname "*.OSID_myoldOS.*tree" -print0 | xargs -0 rm -rf
+find /mystorage -iname "*.OSID_myoldOS.*tree" -print0 | xargs -0 rm -rf
 </pre>
 
 Also, OS-marked are compatible with multi-architecture scripts.  You
 can for example compute OS_ID in another script and refer e.g. to:
 
-   /path/to/some-tool.OSID_${OS_ID}.installtree/bin/awesometool
+<pre>
+/path/to/some-tool.OSID_${OS_ID}.installtree/bin/awesometool
+</pre>
 
 and expect it to do the right thing.
 
@@ -95,4 +97,4 @@ But you can fork this repo and adapt the script to your local context!
 ## Okay, show me the code
 
 The script is self-contained and self-explanatory, see
-[cmake_project_bootstrap.sh](blob/master/cmake_project_bootstrap.sh).
+[cmake_project_bootstrap.sh](cmake_project_bootstrap.sh).
