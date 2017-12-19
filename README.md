@@ -32,8 +32,8 @@ does the heavy lifting, yet some steps remain:
 It makes sense that `CMake` keeps those steps manual because it is a
 generic tool, and there's no generic answer to those steps.
 
-But in your context, you probably have generic answers to what `CMake`
-needs.  So, why not write those answers once and for all?
+But in your context, you probably have *your* usual answers to what
+`CMake` needs.  So, why not write those answers once and for all?
 
 ## Situation after/with this tool
 
@@ -73,7 +73,7 @@ versions of distributions, which too often results in:
 find /mystorage -iname "*.OSID_myoldOS.*tree" -print0 | xargs -0 rm -rf
 </pre>
 
-Also, OS-marked are compatible with multi-architecture scripts.  You
+Also, OS-marks are compatible with multi-architecture scripts.  You
 can for example compute OS_ID in another script and refer e.g. to:
 
 <pre>
