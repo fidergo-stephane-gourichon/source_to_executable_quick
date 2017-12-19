@@ -24,8 +24,9 @@ does the heavy lifting, yet some steps remain:
 3. **manually** do a **configure** step,
 
 4. **manually** set up an install directory (if installing without
-   root privilege, which in some case is not even possible and even
-   when it is, needs password prompting)
+   root privilege either by choice like I do, or because system-wide
+   install is not even possible and even when it is, needs password
+   prompting)
 
 ## Why this situation is normal (and not a CMake limitation).
 
